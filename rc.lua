@@ -20,6 +20,15 @@ require("awful.hotkeys_popup.keys")
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
+-- {{{ Error handling
+-- Check if awesome encountered an error during startup and fell back to
+-- another config (This code will only ever execute for the fallback config)
+if awesome.startup_errors then
+    naughty.notify({ preset = naughty.config.presets.critical,
+                     title = "Oops, there were errors during startup!",
+                     text = awesome.startup_errors })
+end
+
 -- Handle runtime errors after startup
 do
     local in_error = false
@@ -194,7 +203,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "Code", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -210,44 +219,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
 
     -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist {
-    screen   = s,
-    filter   = awful.widget.tasklist.filter.currenttags,
-    buttons  = tasklist_buttons,
-    layout   = {
-        spacing_widget = {
-            {
-                forced_width  = 5,
-                forced_height = 24,
-                thickness     = 1,
-                color         = '#777777',
-                widget        = wibox.widget.separator
-            },
-            valign = 'center',
-            halign = 'center',
-            widget = wibox.container.place,
-        },
-        spacing = 1,
-        layout  = wibox.layout.fixed.horizontal
-    },
-    -- Notice that there is *NO* wibox.wibox prefix, it is a template,
-    -- not a widget instance.
-    widget_template = {
-        {
-            wibox.widget.base.make_widget(),
-            forced_height = 5,
-            id            = 'background_role',
-            widget        = wibox.container.background,
-        },
-        {
-            awful.widget.clienticon,
-            margins = 5,
-            widget  = wibox.container.margin
-        },
-        nil,
-        layout = wibox.layout.align.vertical,
-    },
-}
+    s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
@@ -533,8 +505,8 @@ awful.rules.rules = {
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    { rule = { class = "Firefox" },
-       properties = { screen = 1, tag = "2" } },
+    -- { rule = { class = "Firefox" },
+    --   properties = { screen = 1, tag = "2" } },
 }
 -- }}}
 
