@@ -1,5 +1,8 @@
 local awful = require "awful"
 local gears = require "gears"
+local hotkeys_popup = require("awful.hotkeys_popup").widget
+
+modkey = "Mod4"
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
