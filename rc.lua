@@ -8,6 +8,7 @@ local dpi = require("beautiful").xresources.apply_dpi
 -- Modules
 require("module.autostart")
 require("module.hotkeys")
+require("layout")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
@@ -183,6 +184,7 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+--[[
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -232,7 +234,7 @@ awful.screen.connect_for_each_screen(function(s)
             s.mylayoutbox,
         },
     }
-end)
+end)]]--
 -- }}}
 
 -- {{{ Mouse bindings

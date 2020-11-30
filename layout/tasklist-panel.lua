@@ -30,5 +30,44 @@ function build(Screen, visible) {
     return awful.widget.tasklist (
     s,
     awful.widget.tasklist.filter.currenttags,
-    tasklist_buttons)
+    tasklist_buttons,
+    awful.widget.common.list_update,
+    {
+        spacing_widget = {
+            {
+                forced_width  = 5,
+                forced_height = 24,
+                thickness     = 1,
+                color         = '#777777',
+                widget        = wibox.widget.separator
+            },
+            valign = 'center',
+            halign = 'center',
+            widget = wibox.container.place,
+        },
+        spacing = 1,
+        layout  = wibox.layout.fixed.horizontal
+    },
+    {
+        {
+            wibox.widget.base.make_widget(),
+            forced_height = 5,
+            id            = 'background_role',
+            widget        = wibox.container.background,
+        },
+        {
+            {
+                id     = 'clienticon',
+                widget = awful.widget.clienticon,
+            },
+            margins = 5,
+            widget  = wibox.container.margin
+        },
+        nil,
+        create_callback = function(self, c, index, objects) --luacheck: no unused args
+            self:get_children_by_id('clienticon')[1].client = c
+        end,
+        layout = wibox.layout.align.vertical,
+    }
+    )
 }
