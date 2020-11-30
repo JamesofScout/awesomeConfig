@@ -1,0 +1,3 @@
+luarocks // sudo apt install luarocks
+compton  // sudo apt install compton
+lunajson // sudo luarocks install lunajson
