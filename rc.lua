@@ -1,5 +1,9 @@
 pcall(require, "luarocks.loader")
 
+--globals
+theme = require("theme")
+
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -11,7 +15,6 @@ local dpi = require("beautiful").xresources.apply_dpi
 require("module.autostart")
 require("module.hotkeys")
 require("layout")
-theme = require("theme")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
