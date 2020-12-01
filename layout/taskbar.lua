@@ -45,26 +45,7 @@ local function TaskList(scr, offset)
             layout = wibox.layout.align.vertical,
         },
     }
-    if offset then 
-        offsetY = dpi(12) 
-        offsetX = dpi(10)
-    end
-    local panel = wibox {
-        ontop = false,
-        screen = scr,
-        visible = true,
-        height = dpi(32),
-        width = dpi(48),
-        x = scr.geometry.x + offsetX,
-        y = scr.geometry.y + offsetY,
-        stretch = false,
-        bg = theme.colors.primary,
-        struts = {top = dpi(32)}
-    }
-
-    panel:setup{layout = wibox.layout.fixed.horizontal, tasklist}
-
-    return panel
+    return tasklist
 end
 
 return TaskList
