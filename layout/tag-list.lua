@@ -1,10 +1,21 @@
 local awful = require('awful')
 local beautiful = require('beautiful')
 local wibox = require('wibox')
+local gears = require('gears')
 local dpi = require('beautiful').xresources.apply_dpi
-local taglist = require("widget.tag-list")
+local taglist = nil
 
-local function ClockPanel(scr, offset)
+
+
+local function TagList(scr, offset)
+    error(scr)
+    taglist = awful.widget.taglist {
+        screen = scr,
+        filter = awful.widget.taglist.filter.all,
+        buttons = gears.table.join(
+            awful.button({ }, 1,function(t) t:view_only() end)
+        )
+    }
     if offset then 
         offsetY = dpi(12) 
         offsetX = dpi(10)
@@ -19,13 +30,12 @@ local function ClockPanel(scr, offset)
         y = scr.geometry.y + offsetY,
         stretch = false,
         bg = theme.colors.background,
-        fg = theme.colors.foreground,
         struts = {top = dpi(32)}
     }
 
-    panel:setup{layout = wibox.layout.align.horizontal, taglist}
+    panel:setup{layout = wibox.layout.fixed.horizontal, taglist}
 
     return panel
 end
 
-return ClockPanel
+return TagList

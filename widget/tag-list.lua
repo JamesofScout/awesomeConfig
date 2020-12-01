@@ -1,11 +1,22 @@
 local wibox = require("wibox")
+local beautiful = require("beautiful")
 
 local function build(scr, offset)
-    return wibox.widget {
-        image  = beautiful.awesome_icon,
-        resize = false,
-        widget = wibox.widget.imagebox
-    }
+    local tags = scr.tags
+    for _,tag in tags do 
+        wibox.widget {
+            image  = tag.icon,
+            resize = false,
+            widget = wibox.widget.imagebox
+        }
+    end
+    
 end
 
-return build
+return wibox.widget {
+    image  = "test.png",
+    resize = false,
+    forced_height = nil,
+    forced_width = nil,
+    widget = wibox.widget.imagebox
+}
