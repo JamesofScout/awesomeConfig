@@ -2,7 +2,7 @@ local awful = require "awful"
 local tasklist_panel = require "layout.tasklist-panel"
 local clock_panel = require "layout.clock-panel"
 local tag_list = require("layout.tag-list")
-local task_list = require("layout.tasklist")
+local task_list = require("layout.taskbar")
 
 
 awful.screen.connect_for_each_screen(function (s)
