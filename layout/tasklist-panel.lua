@@ -1,5 +1,5 @@
 local awful = require "awful"
-
+local gears = require "gears"
 
 local tasklist_buttons = gears.table.join(
                      awful.button({ }, 1, function (c)
@@ -18,7 +18,7 @@ local tasklist_buttons = gears.table.join(
                                                   c:raise()
                                               end
                                           end),
-                     awful.button({ }, 3, client_menu_toggle_fn()),
+                     --awful.button({ }, 3, client_menu_toggle_fn()),
                      awful.button({ }, 4, function ()
                                               awful.client.focus.byidx(1)
                                           end),
@@ -26,7 +26,7 @@ local tasklist_buttons = gears.table.join(
                                               awful.client.focus.byidx(-1)
                                           end))
 
-function build(Screen, visible) {
+function build(Screen, visible)
     return awful.widget.tasklist (
     s,
     awful.widget.tasklist.filter.currenttags,
@@ -70,4 +70,4 @@ function build(Screen, visible) {
         layout = wibox.layout.align.vertical,
     }
     )
-}
+end

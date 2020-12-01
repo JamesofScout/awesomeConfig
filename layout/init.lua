@@ -3,7 +3,8 @@ local tasklist_panel = require "layout.tasklist-panel"
 local clock_panel = require "layout.clock-panel"
 
 awful.screen.connect_for_each_screen(function (s)
-   s.clock_panel = clock_panel(s, true)
+    awful.tag({"1","2","3"},s,awful.layout.layouts[1])
+    s.clock_panel = clock_panel(s, true)
 end)
 
 -- Hide bars when app go fullscreen
