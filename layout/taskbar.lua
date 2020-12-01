@@ -38,7 +38,6 @@ local tasklist = awful.widget.tasklist {
             margins = 5,
             widget  = wibox.container.margin
         },
-        nil,
         layout = wibox.layout.align.vertical,
     },
 }
