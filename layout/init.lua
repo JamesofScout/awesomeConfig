@@ -2,6 +2,8 @@ local awful = require "awful"
 local tasklist_panel = require "layout.tasklist-panel"
 local clock_panel = require "layout.clock-panel"
 local tag_list = require("layout.tag-list")
+local task_list = require("layout.tasklist")
+
 
 awful.screen.connect_for_each_screen(function (s)
     awful.tag.add ( "code", {
@@ -11,6 +13,7 @@ awful.screen.connect_for_each_screen(function (s)
     awful.tag({"1","2","3"},s,awful.layout.layouts[1])
     s.clock_panel = clock_panel(s, true)
     s.tag_list = tag_list(s, true)
+    s.task_list = task_list(s, true)
 end)
 
 -- Hide bars when app go fullscreen
@@ -21,6 +24,7 @@ function updateBarsVisibility()
            -- Order matter here for shadow
            s.clock_panel.visible = not fullscreen
            s.tag_list.visible = not fullscreen
+           s.task_list.visible = not fullscreen
        end
    end
 end
