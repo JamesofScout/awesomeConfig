@@ -11,6 +11,7 @@ local dpi = require("beautiful").xresources.apply_dpi
 require("module.autostart")
 require("module.hotkeys")
 require("layout")
+theme = require("theme")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library

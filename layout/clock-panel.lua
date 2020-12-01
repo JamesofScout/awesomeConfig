@@ -20,7 +20,8 @@ local function ClockPanel(scr, offset)
         x = scr.geometry.width - dpi(184),
         y = scr.geometry.y + offsetY,
         stretch = false,
-        bg = "#FF0000",
+        bg = theme.colors.accent,
+        fg = theme.colors.foreground
         struts = {top = dpi(32)}
     }
 
