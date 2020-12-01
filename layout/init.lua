@@ -12,7 +12,7 @@ awful.screen.connect_for_each_screen(function (s)
     )
     awful.tag({"1","2","3"},s,awful.layout.layouts[1])
     s.clock_panel = clock_panel(s, true)
-    s.tag_list = tag_list(s, true)
+    --s.tag_list = tag_list(s, true)
     s.task_list = task_list(s, true)
 end)
 
@@ -23,7 +23,7 @@ function updateBarsVisibility()
            local fullscreen = s.selected_tag.fullscreenMode
            -- Order matter here for shadow
            s.clock_panel.visible = not fullscreen
-           s.tag_list.visible = not fullscreen
+           --s.tag_list.visible = not fullscreen
            s.task_list.visible = not fullscreen
        end
    end
