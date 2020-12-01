@@ -13,7 +13,8 @@ local function TagList(scr, offset)
         filter = awful.widget.taglist.filter.all,
         buttons = gears.table.join(
             awful.button({ }, 1,function(t) t:view_only() end)
-        )
+        ),
+        layout = wibox.layout.fixed.horizontal()
     }
     if offset then 
         offsetY = dpi(12) 
