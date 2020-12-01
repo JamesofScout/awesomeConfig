@@ -8,7 +8,6 @@ local taglist = nil
 
 
 local function TagList(scr, offset)
-    error(scr)
     taglist = awful.widget.taglist {
         screen = scr,
         filter = awful.widget.taglist.filter.all,
