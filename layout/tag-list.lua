@@ -28,7 +28,7 @@ local function TagList(scr, offset)
         x = scr.geometry.x + offsetX,
         y = scr.geometry.y + offsetY,
         stretch = false,
-        bg = theme.colors.background,
+        bg = theme.colors.primary,
         struts = {top = dpi(32)}
     }
 
