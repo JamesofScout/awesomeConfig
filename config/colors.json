@@ -1,0 +1,8 @@
+{
+    "primary": "#FFFFFF",
+    "accent": "#366DB5",
+    "background": "#08111C",
+    "foreground": "#FFFFFF",
+    "minimize": "#111111",
+    "foreground_urgent":"#FF0000"
+}
